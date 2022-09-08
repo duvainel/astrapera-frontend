@@ -2,8 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.webp";
 import { Image, Flex, Spacer, Box, List, ListItem } from "@chakra-ui/react";
+import { useGetPostsQuery } from "../../state/baseApi";
 
 export default function Navbar() {
+  const { data } = useGetPostsQuery();
+  console.log(data);
   return (
     <Flex as={"nav"} minWidth="max-content" alignItems="center" gap="2">
       <Box>
