@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function AboutUs() {
-  return <div>AboutUs</div>;
+export function AboutUs() {
+  return <div>Hakkımızda</div>;
 }
