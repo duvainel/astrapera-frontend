@@ -1,9 +1,8 @@
-import React from "react";
+import { CardList } from "../../components";
+import { useGetPostsQuery } from "../../state/baseApi";
 
-export default function Home() {
-  return (
-    <div>
-      <h1>Home</h1>
-    </div>
-  );
+export function Home() {
+  const { data: posts } = useGetPostsQuery();
+
+  return <CardList data={posts?.data} pt={10} pb={20} />;
 }
