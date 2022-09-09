@@ -26,7 +26,36 @@ export const baseApi = createApi({
     getPost: builder.query({
       query: (id) => `posts/${id}`,
     }),
+    getCategories: builder.query({
+      query: () => {
+        return {
+          url: `categories`,
+          params: {
+            populate: "posts",
+          },
+        };
+      },
+    }),
+    getCategory: builder.query({
+      query: (id) => {
+        return {
+          url: `categories/${id}`,
+          params: {
+            populate: "posts",
+          },
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetPostQuery, useGetPostsQuery } = baseApi;
+export const {
+  useGetPostQuery,
+  useLazyGetPostQuery,
+  useGetPostsQuery,
+  useLazyGetPostsQuery,
+  useGetCategoriesQuery,
+  useLazyGetCategoriesQuery,
+  useGetCategoryQuery,
+  useLazyGetCategoryQuery,
+} = baseApi;
