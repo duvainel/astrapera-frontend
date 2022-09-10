@@ -19,7 +19,7 @@ export function Card(props) {
         w="full"
         h={64}
         fit="cover"
-        src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+        src={props.post.attributes.cover?.data.attributes.url}
         alt="Article"
       />
 
@@ -62,7 +62,7 @@ export function Card(props) {
         </Box>
 
         <Box mt={"auto"} pt={4}>
-          <Flex alignItems="center">
+          <Flex alignItems="center" justify={"space-between"}>
             <Link
               fontWeight="bold"
               color="gray.700"
@@ -70,7 +70,7 @@ export function Card(props) {
                 color: "gray.200",
               }}
             >
-              John Doe
+              {props.post.attributes.author.data.attributes.name}
             </Link>
             <chakra.span
               mx={1}
@@ -80,9 +80,7 @@ export function Card(props) {
                 color: "gray.300",
               }}
             >
-              {dayjs(props.post.attributes.publishedAt).format(
-                "DD - MM - YYYY"
-              )}
+              {dayjs(props.post.attributes.publishedAt).format("DD/MM/YYYY")}
             </chakra.span>
           </Flex>
         </Box>
