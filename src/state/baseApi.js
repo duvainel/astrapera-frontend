@@ -41,6 +41,14 @@ export const baseApi = createApi({
           };
         }
 
+        if (arg?.id) {
+          params.filters = {
+            id: {
+              $eq: arg.id,
+            },
+          };
+        }
+
         return {
           url: `posts`,
           params,
