@@ -1,16 +1,22 @@
 import { useParams } from "react-router-dom";
 import { CardList } from "../../components";
 import {
-  useLazyGetCategoryQuery,
+  useGetCategoriesQuery,
   useLazyGetPostsQuery,
 } from "../../state/baseApi";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export function Categories() {
   const { categoryId } = useParams();
   const [data, setData] = useState([]);
-  const [getCategory] = useLazyGetCategoryQuery();
+  const { data: categories } = useGetCategoriesQuery();
   const [getPosts] = useLazyGetPostsQuery();
+
+  const getCategorySlug = useCallback(() => {
+    if (!categoryId) return;
+    return categories?.data?.filter((category) => category.id == categoryId)[0]
+      .attributes.slug;
+  }, [categoryId]);
 
   useEffect(() => {
     if (!categoryId) return;
@@ -22,10 +28,10 @@ export function Categories() {
         });
       return;
     }
-    getCategory(categoryId)
+    getPosts({ category: getCategorySlug() })
       .unwrap()
       .then((result) => {
-        setData(result.data.attributes.posts.data);
+        setData(result.data);
       });
   }, [categoryId]);
 
