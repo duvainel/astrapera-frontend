@@ -4,5 +4,5 @@ import { useGetPostsQuery } from "../../state/baseApi";
 export function Home() {
   const { data: posts } = useGetPostsQuery();
 
-  return <CardList data={posts?.data} pt={10} pb={20} />;
+  return <CardList data={posts?.data} />;
 }

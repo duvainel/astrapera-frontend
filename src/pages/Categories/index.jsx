@@ -35,5 +35,5 @@ export function Categories() {
       });
   }, [categoryId]);
 
-  return <CardList data={data} pt={10} pb={20} />;
+  return <CardList data={data} />;
 }
