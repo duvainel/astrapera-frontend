@@ -13,50 +13,54 @@ import { LinkWithRouter, Container } from "../../components";
 import { DesktopNav } from "./DesktopNav";
 import { MobileNav } from "./MobileNav";
 import { useGetCategoriesQuery } from "../../state/baseApi";
-import { useMemo, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
+
+const NAV_ITEMS = [
+  {
+    label: "Ana Sayfa",
+    href: "/",
+  },
+  {
+    label: "Hakkımızda",
+    href: "/hakkimizda",
+  },
+];
 
 export function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   const { data: categories } = useGetCategoriesQuery();
+  const [navItems, setNavItems] = useState(NAV_ITEMS);
 
-  const NAV_ITEMS = useMemo(() => {
-    return [
-      {
-        label: "Ana Sayfa",
-        href: "/",
-      },
-      {
-        label: "Hakkımızda",
-        href: "/hakkimizda",
-      },
-      {
-        label: "Kategoriler",
-        children: [
-          {
-            label: "Tüm Yazılar",
-            href: "/kategoriler/0",
-          },
-        ],
-      },
-    ];
-  }, [categories]);
-
-  const generateCategories = useCallback(() => {
-    const navCategories = NAV_ITEMS.filter(
-      (item) => item.label === "Kategoriler"
-    );
+  useEffect(() => {
+    if (!categories) return;
 
     const generatedCategories = categories?.data.map((category) => {
-      navCategories[0].children.push({
+      return {
         label: category.attributes.name,
         href: `/kategoriler/${category.id}`,
-      });
+      };
     });
 
-    navCategories.children = generatedCategories;
-  }, [categories]);
+    setNavItems((prev) => {
+      return [
+        ...prev,
+        {
+          label: "Kategoriler",
+          children: [
+            {
+              label: "Tüm Yazılar",
+              href: "/kategoriler/0",
+            },
+            ...generatedCategories,
+          ],
+        },
+      ];
+    });
 
-  generateCategories();
+    return () => {
+      setNavItems(NAV_ITEMS);
+    };
+  }, [categories]);
 
   return (
     <Box
@@ -103,13 +107,13 @@ export function Navbar() {
             </LinkWithRouter>
 
             <Flex display={{ base: "none", md: "flex" }} ml={10}>
-              <DesktopNav items={NAV_ITEMS} />
+              <DesktopNav items={navItems} />
             </Flex>
           </Flex>
         </Flex>
 
         <Collapse in={isOpen} animateOpacity>
-          <MobileNav items={NAV_ITEMS} />
+          <MobileNav items={navItems} />
         </Collapse>
       </Container>
     </Box>
