@@ -4,7 +4,7 @@ import { Container } from "../components";
 
 export function AppRoutes() {
   return (
-    <Container pt={10} pb={20}>
+    <Container pt={5} pb={20}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hakkimizda" element={<AboutUs />} />
