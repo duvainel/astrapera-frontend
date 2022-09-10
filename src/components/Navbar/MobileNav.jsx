@@ -9,7 +9,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { LinkWithRouter } from "../../components";
+import { LinkWithRouter, SearchInput } from "../../components";
 
 export function MobileNav(props) {
   return (
@@ -18,6 +18,7 @@ export function MobileNav(props) {
       p={4}
       display={{ md: "none" }}
     >
+      <SearchInput />
       {props.items.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}

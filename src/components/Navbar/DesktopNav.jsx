@@ -10,7 +10,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import { LinkWithRouter } from "../../components";
+import { LinkWithRouter, SearchInput } from "../../components";
 
 export function DesktopNav(props) {
   const linkColor = useColorModeValue("gray.600", "gray.200");
@@ -18,7 +18,7 @@ export function DesktopNav(props) {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={4}>
+    <Stack direction={"row"} spacing={4} align="center">
       {props.items.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
@@ -57,6 +57,7 @@ export function DesktopNav(props) {
           </Popover>
         </Box>
       ))}
+      <SearchInput />
     </Stack>
   );
 }
