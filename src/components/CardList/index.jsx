@@ -4,7 +4,10 @@ import { Card } from "../../components";
 export function CardList(props) {
   return (
     <Grid
-      templateColumns="repeat(auto-fill, minmax(350px, 1fr))"
+      templateColumns={{
+        base: "repeat(auto-fill, minmax(231px, 1fr))",
+        sm: "repeat(auto-fill, minmax(300px, 1fr))",
+      }}
       gap={6}
       {...props}
     >
