@@ -23,31 +23,19 @@ export const baseApi = createApi({
           populate: "*",
         };
 
-        if (arg?.category) {
-          params.filters = {
-            categories: {
-              slug: {
-                $eq: arg.category,
-              },
+        params.filters = {
+          categories: {
+            slug: {
+              $eq: arg.category,
             },
-          };
-        }
-
-        if (arg?.search) {
-          params.filters = {
-            title: {
-              $contains: arg.search,
-            },
-          };
-        }
-
-        if (arg?.id) {
-          params.filters = {
-            id: {
-              $eq: arg.id,
-            },
-          };
-        }
+          },
+          id: {
+            $eq: arg.id,
+          },
+          title: {
+            $contains: arg.search,
+          },
+        };
 
         return {
           url: `posts`,

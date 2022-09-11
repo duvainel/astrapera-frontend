@@ -5,12 +5,16 @@ import {
   useLazyGetPostsQuery,
 } from "../../state/baseApi";
 import { useState, useEffect, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { resetQuery } from "../../state/slices/search";
 
 export function Categories() {
   const { categoryId } = useParams();
   const [data, setData] = useState([]);
   const { data: categories } = useGetCategoriesQuery();
   const [getPosts] = useLazyGetPostsQuery();
+  const dispatch = useDispatch();
+  const search = useSelector((state) => state.search.query);
 
   const getCategorySlug = useCallback(() => {
     if (!categoryId) return;
@@ -19,21 +23,25 @@ export function Categories() {
   }, [categoryId]);
 
   useEffect(() => {
+    dispatch(resetQuery());
+  }, [categoryId]);
+
+  useEffect(() => {
     if (!categoryId) return;
     if (categoryId == 0) {
-      getPosts()
+      getPosts({ search })
         .unwrap()
         .then((result) => {
           setData(result.data);
         });
       return;
     }
-    getPosts({ category: getCategorySlug() })
+    getPosts({ category: getCategorySlug(), search })
       .unwrap()
       .then((result) => {
         setData(result.data);
       });
-  }, [categoryId]);
+  }, [categoryId, search]);
 
   return <CardList data={data} />;
 }
