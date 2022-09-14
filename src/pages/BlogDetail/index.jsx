@@ -21,7 +21,9 @@ export function BlogDetail() {
         />
       </Flex>
       <Prose>
-        <Heading as={"h1"}>{posts.data[0].attributes.title}</Heading>
+        <Heading color="brand.500" as={"h1"}>
+          {posts.data[0].attributes.title}
+        </Heading>
         <ReactMarkdown>{posts.data[0].attributes.description}</ReactMarkdown>
       </Prose>
       <Text mt={6} textAlign={"right"}>
