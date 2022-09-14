@@ -11,7 +11,7 @@ import {
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { LinkWithRouter, SearchInput } from "../../components";
 
-export function MobileNav(props) {
+export function MobileNav({ items }) {
   return (
     <Stack
       bg={useColorModeValue("white", "gray.800")}
@@ -19,7 +19,7 @@ export function MobileNav(props) {
       display={{ md: "none" }}
     >
       <SearchInput />
-      {props.items.map((navItem) => (
+      {items.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
     </Stack>

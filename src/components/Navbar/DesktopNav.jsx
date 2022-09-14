@@ -12,14 +12,14 @@ import {
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { LinkWithRouter, SearchInput } from "../../components";
 
-export function DesktopNav(props) {
+export function DesktopNav({ items }) {
   const linkColor = useColorModeValue("gray.600", "gray.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
     <Stack direction={"row"} spacing={4} align="center">
-      {props.items.map((navItem) => (
+      {items.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
