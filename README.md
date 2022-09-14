@@ -10,6 +10,7 @@ You can preview [here](https://astrapera-frontend.netlify.app/)
 
 - [React](https://reactjs.org/)
 - [Chakra UI](https://chakra-ui.com/) as component library
+- [Strapi](https://strapi.io/) as headless CMS
 - [Redux Toolkit](https://redux-toolkit.js.org/) for state management
 - [Redux Toolkit Query](https://redux-toolkit.js.org/rtk-query/overview) for handling API calls
 - [Day.js](https://day.js.org/) for parsing dates
