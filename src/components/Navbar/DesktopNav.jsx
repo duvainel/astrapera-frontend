@@ -13,8 +13,8 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 import { LinkWithRouter, SearchInput } from "../../components";
 
 export function DesktopNav({ items }) {
-  const linkColor = useColorModeValue("gray.600", "gray.200");
-  const linkHoverColor = useColorModeValue("gray.800", "white");
+  const linkColor = useColorModeValue("white", "gray.200");
+  const linkHoverColor = useColorModeValue("brand.200", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
@@ -73,13 +73,13 @@ function DesktopSubNav({ label, href, subLabel }) {
       display={"block"}
       p={2}
       rounded={"md"}
-      _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
+      _hover={{ bg: useColorModeValue("brand.100", "gray.900") }}
     >
       <Stack direction={"row"} align={"center"}>
         <Box>
           <Text
             transition={"all .3s ease"}
-            _groupHover={{ color: "pink.400" }}
+            _groupHover={{ color: "brand.500" }}
             fontWeight={500}
           >
             {label}
@@ -95,7 +95,7 @@ function DesktopSubNav({ label, href, subLabel }) {
           align={"center"}
           flex={1}
         >
-          <Icon color={"pink.400"} w={5} h={5} as={ChevronRightIcon} />
+          <Icon color={"brand.500"} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </LinkWithRouter>

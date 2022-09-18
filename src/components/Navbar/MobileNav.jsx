@@ -16,6 +16,7 @@ export function MobileNav({ items }) {
     <Stack
       bg={useColorModeValue("white", "gray.800")}
       p={4}
+      mb={4}
       display={{ md: "none" }}
     >
       <SearchInput />

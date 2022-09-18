@@ -12,6 +12,12 @@ export function SearchInput() {
   return (
     <InputGroup w="auto">
       <Input
+        _focusVisible={{
+          outlineWidth: "2px",
+          outlineColor: "brand.300",
+          outlineOffset: "-1px",
+        }}
+        bg={"#fff"}
         value={search}
         onChange={handleChange}
         placeholder="Ara"

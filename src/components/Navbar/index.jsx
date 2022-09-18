@@ -84,12 +84,13 @@ export function Navbar() {
         >
           <Flex ml={{ base: -2 }} display={{ base: "flex", md: "none" }}>
             <IconButton
+              _hover={{ bg: "brand.400" }}
               onClick={onToggle}
               icon={
                 isOpen ? (
-                  <CloseIcon w={3} h={3} />
+                  <CloseIcon color="#fff" w={3} h={3} />
                 ) : (
-                  <HamburgerIcon w={5} h={5} />
+                  <HamburgerIcon color="#fff" w={5} h={5} />
                 )
               }
               variant={"ghost"}
