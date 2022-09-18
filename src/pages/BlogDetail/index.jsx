@@ -21,7 +21,7 @@ export function BlogDetail() {
         />
       </Flex>
       <Prose>
-        <Heading color="brand.500" as={"h1"}>
+        <Heading color={useColorModeValue("brand.500", "white")} as={"h1"}>
           {posts.data[0].attributes.title}
         </Heading>
         <ReactMarkdown>{posts.data[0].attributes.description}</ReactMarkdown>
