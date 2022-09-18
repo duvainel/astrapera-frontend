@@ -2,7 +2,14 @@ import { useParams } from "react-router-dom";
 import { useGetPostsQuery } from "../../state/baseApi";
 import { Prose } from "@nikolovlazar/chakra-ui-prose";
 import ReactMarkdown from "react-markdown";
-import { Text, Flex, Heading, Image, chakra } from "@chakra-ui/react";
+import {
+  Text,
+  Flex,
+  Heading,
+  Image,
+  chakra,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
 export function BlogDetail() {
   const { id } = useParams();
