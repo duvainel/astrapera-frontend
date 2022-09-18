@@ -2,7 +2,7 @@ import { Flex, Box, Image, chakra, Link, Badge } from "@chakra-ui/react";
 import { LinkWithRouter } from "../../components";
 import dayjs from "dayjs";
 
-export function Card(props) {
+export function Card({ post }) {
   return (
     <Box
       rounded="lg"
@@ -19,13 +19,13 @@ export function Card(props) {
         w="full"
         h={64}
         fit="cover"
-        src={props.post.attributes.cover?.data.attributes.url}
+        src={post.attributes.cover?.data.attributes.url}
         alt="Article"
       />
 
       <Flex direction={"column"} p={6} h="calc(100% - 16rem)">
         <Box>
-          {props.post.attributes.categories?.data?.map((category) => {
+          {post.attributes.categories?.data?.map((category) => {
             return (
               <Badge bg={"brand.400"} color={"white"} mr={1} key={category.id}>
                 {category.attributes.name}
@@ -33,7 +33,7 @@ export function Card(props) {
             );
           })}
           <LinkWithRouter
-            href={"/" + props.post.id}
+            href={"/" + post.id}
             display="block"
             color="gray.800"
             _dark={{
@@ -47,7 +47,7 @@ export function Card(props) {
               textDecor: "underline",
             }}
           >
-            {props.post.attributes.title}
+            {post.attributes.title}
           </LinkWithRouter>
           <chakra.p
             mt={2}
@@ -57,7 +57,7 @@ export function Card(props) {
               color: "gray.400",
             }}
           >
-            {props.post.attributes.summary}
+            {post.attributes.summary}
           </chakra.p>
         </Box>
 
@@ -70,7 +70,7 @@ export function Card(props) {
                 color: "gray.200",
               }}
             >
-              {props.post.attributes.author.data.attributes.name}
+              {post.attributes.author.data.attributes.name}
             </Link>
             <chakra.span
               mx={1}
@@ -80,7 +80,7 @@ export function Card(props) {
                 color: "gray.300",
               }}
             >
-              {dayjs(props.post.attributes.publishedAt).format("DD/MM/YYYY")}
+              {dayjs(post.attributes.publishedAt).format("DD/MM/YYYY")}
             </chakra.span>
           </Flex>
         </Box>
