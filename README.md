@@ -2,6 +2,8 @@
 
 An alternative blog design and implementation for [Astrapera](https://astrapera.com/)
 
+**Important Note: Because I deployed Strapi using Heroku's free plan, requests can't be resolved as expected when there's no request for a while. Just wait for a little and refresh the page if you see a blank page.**
+
 This web app is built using [Vite](https://vitejs.dev/) + [React](https://reactjs.org/).
 
 You can preview [here](https://astrapera-frontend.netlify.app/)
