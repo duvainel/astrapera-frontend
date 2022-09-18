@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { resetQuery } from "../../state/slices/search";
 
 export function Categories() {
-  const { categoryId } = useParams();
+  const { categoryId } = useParams(); // URL'den kategori id'sini çektiğimiz yer
   const [data, setData] = useState([]);
   const { data: categories } = useGetCategoriesQuery();
   const [getPosts] = useLazyGetPostsQuery();

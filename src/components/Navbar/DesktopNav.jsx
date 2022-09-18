@@ -19,6 +19,7 @@ export function DesktopNav({ items }) {
 
   return (
     <Stack direction={"row"} spacing={4} align="center">
+      {/* Ana menü elemanlarını oluşturduğumuz döngü */}
       {items.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
@@ -48,6 +49,7 @@ export function DesktopNav({ items }) {
                 minW={"sm"}
               >
                 <Stack>
+                  {/* Alt menü elemanlarını oluşturduğumuz döngü */}
                   {navItem.children.map((child) => (
                     <DesktopSubNav key={child.label} {...child} />
                   ))}
@@ -62,6 +64,7 @@ export function DesktopNav({ items }) {
   );
 }
 
+// Alt menü komponenti
 function DesktopSubNav({ label, href, subLabel }) {
   return (
     <LinkWithRouter

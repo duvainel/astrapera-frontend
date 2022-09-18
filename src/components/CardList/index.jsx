@@ -4,8 +4,9 @@ import { Card } from "../../components";
 export function CardList(props) {
   return (
     <Grid
+      // Responsive grid yapısı
       templateColumns={{
-        base: "repeat(auto-fill, minmax(231px, 1fr))",
+        base: "repeat(auto-fill, minmax(230px, 1fr))",
         sm: "repeat(auto-fill, minmax(300px, 1fr))",
       }}
       gap={6}

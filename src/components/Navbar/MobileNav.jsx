@@ -19,6 +19,7 @@ export function MobileNav({ items }) {
       display={{ md: "none" }}
     >
       <SearchInput />
+      {/* Ana menü elemanlarını oluşturduğumuz döngü */}
       {items.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -26,6 +27,7 @@ export function MobileNav({ items }) {
   );
 }
 
+// Alt menü komponenti
 function MobileNavItem({ label, children, href }) {
   const { isOpen, onToggle } = useDisclosure();
 
@@ -67,6 +69,7 @@ function MobileNavItem({ label, children, href }) {
           borderColor={useColorModeValue("gray.200", "gray.700")}
           align={"start"}
         >
+          {/* Alt menü elemanlarını oluşturduğumuz döngü */}
           {children &&
             children.map((child) => (
               <LinkWithRouter key={child.label} py={2} href={child.href}>

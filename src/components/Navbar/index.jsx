@@ -15,6 +15,7 @@ import { MobileNav } from "./MobileNav";
 import { useGetCategoriesQuery } from "../../state/baseApi";
 import { useState, useEffect } from "react";
 
+// Statik menü elemanları
 const NAV_ITEMS = [
   {
     label: "Ana Sayfa",
@@ -27,13 +28,14 @@ const NAV_ITEMS = [
 ];
 
 export function Navbar() {
-  const { isOpen, onToggle } = useDisclosure();
-  const { data: categories } = useGetCategoriesQuery();
-  const [navItems, setNavItems] = useState(NAV_ITEMS);
+  const { isOpen, onToggle } = useDisclosure(); // Chakra toggle hook'u
+  const { data: categories } = useGetCategoriesQuery(); // Veriyi çektiğimiz redux toolkit query hook'u
+  const [navItems, setNavItems] = useState(NAV_ITEMS); // Menü elemanlarını tuttuğumuz state
 
   useEffect(() => {
     if (!categories) return;
 
+    // Kategori alt menülerini dinamik bir şekilde oluşturduğumuz döngü
     const generatedCategories = categories?.data.map((category) => {
       return {
         label: category.attributes.name,
@@ -41,6 +43,7 @@ export function Navbar() {
       };
     });
 
+    // Alt menüleriyle beraber ana menüye kategorileri eklediğimiz kısım
     setNavItems((prev) => {
       return [
         ...prev,
@@ -57,6 +60,7 @@ export function Navbar() {
       ];
     });
 
+    // Kategori menüsünün birden fazla kez eklenmesini engelleyen cleanup fonksiyonu
     return () => {
       setNavItems(NAV_ITEMS);
     };
@@ -64,13 +68,13 @@ export function Navbar() {
 
   return (
     <Box
+      bg={"radial-gradient( circle farthest-corner,#510a68,#08081c 700px)"}
       borderBottom={1}
       borderStyle={"solid"}
       borderColor={useColorModeValue("gray.200", "gray.900")}
     >
       <Container>
         <Flex
-          bg={useColorModeValue("white", "gray.800")}
           color={useColorModeValue("gray.600", "white")}
           minH={"60px"}
           py={{ base: 2 }}
@@ -102,7 +106,7 @@ export function Navbar() {
                 width="90px"
                 objectFit="cover"
                 src={logo}
-                alt="Dan Abramov"
+                alt="Astrapera Logo"
               />
             </LinkWithRouter>
 
